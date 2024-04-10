@@ -1,6 +1,6 @@
 import React from "react";
 
-const Carousel = (props) => {
+const Carousel = ({props}) => {
     return (
         <div id="carousel" className="carousel slide pt-3">
             <button
@@ -11,7 +11,7 @@ const Carousel = (props) => {
             >
                 <span>Next Day ={">"} </span>
             </button>
-            <div className="d-flex overflow-x-scroll">
+            <div className="card-array d-flex overflow-x-scroll">
                 <div className="d-flex">
                     <div className="card p-3 ms-3" >
                         <div className="card-body text-center">
