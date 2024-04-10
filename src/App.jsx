@@ -19,6 +19,7 @@ function App() {
   useEffect(() =>{
     updateWeather()
   }, [])
+  
 
   console.log(weather)
   
