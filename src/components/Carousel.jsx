@@ -15,13 +15,13 @@ const Carousel = ({props}) => {
                 <div className="d-flex">
                     <div className="card p-3 ms-3" >
                         <div className="card-body text-center">
-                            <img src="..." className="" alt="Weather Icon"/>
-                            <p className="card-text">Hour</p>
-                            <p className="card-text">Temp</p>
+                            <img src={props.icon} className="card-weather" alt="Weather Icon"/>
+                            <p className="card-text">{props.hour}</p>
+                            <p className="card-text">{props.temp}</p>
                         </div>
                     </div>
                 </div>
-                <div className="d-flex">
+                {/* <div className="d-flex">
                     <div className="card p-3 ms-3" >
                         <div className="card-body text-center">
                             <img src="..." className="" alt="Weather Icon"/>
@@ -47,7 +47,7 @@ const Carousel = ({props}) => {
                             <p className="card-text">Temp</p>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
     );

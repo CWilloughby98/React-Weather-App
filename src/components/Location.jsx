@@ -3,6 +3,11 @@ import { DateTime } from "luxon";
 
 
 const Location = ({props}) => {
+    let currTime = DateTime.now().toISOTime()
+
+    console.log(currTime)
+    // at 2:02 it displays => 02:02:35.537 + 02:00
+
     return (
         <div className="bg-dark text-light mx-4 mb-3">
             <div>

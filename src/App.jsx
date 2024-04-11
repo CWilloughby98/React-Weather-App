@@ -28,7 +28,7 @@ function App() {
       <Navbar />
       <Location props={{icon: locationIcon, location: weather.location}} />
       <Jumbotron props={{icon: cloudy, temp: weather.temp, description: "A lo mejor lleve, o no...", currentWeather: weather.currentWeather}}/>
-      <Carrrousel />
+      <Carrrousel props={{temp: weather.hourlyWeather[0].temp, hour: weather.hourlyWeather[0].hour, icon: cloudy}} />
     </div>
   );
 }
