@@ -1,0 +1,8 @@
+{
+  "appId": "dev.charlie.weatherapp",
+  "appName": "Weather App",
+  "webDir": "dist",
+  "server": {
+    "androidScheme": "https"
+  }
+}
