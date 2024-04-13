@@ -6,9 +6,9 @@ const Navbar = () => {
       <div className="container-fluid">
         <div className="d-flex flex-column">
           <span className="navbar-brand" href="#">
-            Gus mornins
+            Good morning
           </span>
-          <span className="navbar-brand fw-bold" href="#">
+          <span className="navbar-brand fw-bold fs-6" href="#">
             By Charlie
           </span>
         </div>

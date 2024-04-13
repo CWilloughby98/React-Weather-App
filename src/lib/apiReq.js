@@ -10,7 +10,6 @@ export const getCurrentWeather = async (lat, lon, offset = 0) => {
     const currDay = jsonForecast.forecast.forecastday[offset]
     const everyThreeHours = currDay.hour.filter((_elem, index) => index % 3 === 0)
 
-
     return {
         location: jsonForecast.location.name,
         currentWeather: jsonForecast.current.condition.text,
@@ -25,9 +24,8 @@ export const getCurrentWeather = async (lat, lon, offset = 0) => {
 }
 
 // TODO 
-// new function to get 7 days forecast to display the forecast of each day, every 3(?) hours.
-// New request will contain jsonRes.forecast.forecastday[0].date, (0 will be current day, 1 next day, etc.)
-// position 6 will be in the next 6 days)].date/
+//when "next day" is clicked also display the next day data in the jumbo
 
 //get and set default location based on device
+
 //get geolocation based on the name of a city and send it to the forecastRequest as variable
