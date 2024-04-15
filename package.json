@@ -12,6 +12,7 @@
   "dependencies": {
     "@capacitor/android": "^5.7.4",
     "@capacitor/core": "^5.7.4",
+    "@capacitor/geolocation": "^6.0.0",
     "luxon": "^3.4.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

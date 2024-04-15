@@ -8,6 +8,7 @@ import { getIconFomWeather } from "./lib/utils";
 import locationIcon from "./assets/WeatherIcons/location.svg"
 import { cities } from "./lib/data";
 import { DateTime } from "luxon";
+import { getCoordinates } from "./lib/coordinates";
 
 
 function App() {
@@ -19,19 +20,28 @@ function App() {
   const [coordinates, setCoordinates] = useState({lat: city.lat, lon: city.lon})
 
   const updateWeather = async () => {
-    const apiRes = await getCurrentWeather(city.lat, city.lon, offset)
+    const apiRes = await getCurrentWeather(coordinates.lat, coordinates.lon, offset)
     setWeather(apiRes)
   }
 
+  const updateCoords = async () => {
+    setCoordinates(await getCoordinates())
+  }
+
+  useEffect(() => {
+    updateCoords()
+  }, [])
+
   useEffect(() =>{
     updateWeather()
-  }, [offset])
+  }, [offset, coordinates])
   
 
   return (
     <div className="vw-100 vh-100">
       <Navbar props={{hour: currHour}} />
-      <Location props={{icon: locationIcon, location: city.name}} />
+      {coordinates.lat} {coordinates.lon}
+      <Location props={{icon: locationIcon, location: weather.location}} />
       <Jumbotron props={{icon: getIconFomWeather(weather.currentWeather), temp: weather.temp, description: "A lo mejor llueve, o no...", currentWeather: weather.currentWeather}}/>
       <button
             onClick={() => setOffset((prevVal) => prevVal + 1)}

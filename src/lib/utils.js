@@ -120,7 +120,7 @@ const greetings = {
     night: "Good Night"
 }
 
-export const getIconFomWeather = (weather, isNight) => {
+export const getIconFomWeather = (weather = "cloud", isNight) => {
     const icons = isNight ? weatherIcons.night : weatherIcons.day;
     return icons[weather.trim()] || cloud;
 };
