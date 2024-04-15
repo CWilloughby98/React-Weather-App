@@ -7,12 +7,16 @@ import { getCurrentWeather } from "./lib/apiReq";
 import { getIconFomWeather } from "./lib/utils";
 import locationIcon from "./assets/WeatherIcons/location.svg"
 import { cities } from "./lib/data";
+import { DateTime } from "luxon";
 
 
 function App() {
   const [weather, setWeather] = useState({})
   const [offset, setOffset] = useState(0)
   const [city, setCity] = useState(cities[3])
+  const epoch = DateTime.now().toUnixInteger()
+  const currHour = DateTime.fromSeconds(epoch)
+  const [coordinates, setCoordinates] = useState({lat: city.lat, lon: city.lon})
 
   const updateWeather = async () => {
     const apiRes = await getCurrentWeather(city.lat, city.lon, offset)
@@ -23,11 +27,10 @@ function App() {
     updateWeather()
   }, [offset])
   
-  console.log({weather})
-  
+
   return (
     <div className="vw-100 vh-100">
-      <Navbar />
+      <Navbar props={{hour: currHour}} />
       <Location props={{icon: locationIcon, location: city.name}} />
       <Jumbotron props={{icon: getIconFomWeather(weather.currentWeather), temp: weather.temp, description: "A lo mejor llueve, o no...", currentWeather: weather.currentWeather}}/>
       <button

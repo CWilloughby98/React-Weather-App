@@ -3,10 +3,6 @@ import { DateTime } from "luxon";
 
 
 const Location = ({props}) => {
-    //let currTime = DateTime.now().toISOTime()
-    // at 2:02 it displays => 02:02:35.537 + 02:00
-
-    //change it to props.date and use it in app.jsx to chenge it with buttons?
 
     return (
         <div className="bg-dark text-light mx-4 mb-3">

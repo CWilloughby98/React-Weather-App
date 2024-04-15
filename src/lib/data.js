@@ -3,4 +3,4 @@ export const cities = [
     {name: "London", lat:51.5072, lon:-0.1276, }, 
     {name:"Sydney", lat:33.8688, lon:151.2093},
     {name: "Madrid", lat:40.4165, lon: -3.70256}
-] 
+]

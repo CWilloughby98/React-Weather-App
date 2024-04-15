@@ -1,12 +1,13 @@
 import React from "react";
+import { getGreetingFromHour } from "../lib/utils";
 
-const Navbar = () => {
+const Navbar = ({props}) => {
   return (
     <nav className="navbar navbar-dark bg-dark">
       <div className="container-fluid">
         <div className="d-flex flex-column">
           <span className="navbar-brand" href="#">
-            Good morning
+            {getGreetingFromHour(props.hour)}
           </span>
           <span className="navbar-brand fw-bold fs-6" href="#">
             By Charlie
