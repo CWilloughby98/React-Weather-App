@@ -1,16 +1,20 @@
+
 #root{
     overflow-x: hidden;
-    background-color: rgb(33,37,41);
-
+    overflow-y: hidden;
 }
 .jumbo-weather{
-    width: 100px;
+    width: 125px;
+}
+.jumbo-temp{
+    font-size: 5em;
 }
 .card-weather{
     width: 20px;
 }
 .location-icon{
-    width: 20px;
+    width: 17.5px;
+    margin-top: 3px;
 }
 
 .card-array::-webkit-scrollbar {
@@ -20,4 +24,31 @@
 .card-array {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+.by-me{
+    font-size: 0.8em;
+}
+
+.greeting{
+    font-size: 0.9em;
+}
+
+.card-container{
+    width: 125px;
+}
+
+.poster-day{
+    background-image: url("./assets/day.png");
+    background-size: cover;
+}
+.poster-night{
+    background-image: url("./assets/night.png");
+    background-size: cover;
+}
+
+.text-day{
+    color: black;
+}
+.text-night{
+    color: rgb(206, 206, 206);
 }
