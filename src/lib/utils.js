@@ -120,15 +120,17 @@ const greetings = {
     night: "Good Night"
 }
 
+export const isNight = (currentHour) => currentHour <= 8 || currentHour > 21 
+
 export const getIconFomWeather = (weather = "cloud", isNight) => {
     const icons = isNight ? weatherIcons.night : weatherIcons.day;
     return icons[weather.trim()] || cloud;
 };
 
 export const getGreetingFromHour = (hour) => {
-    if (hour >= 12) {
+    if (hour >= 12 && hour < 21) {
         return greetings.evening
-    } else if (hour >= 22 && hour < 8) {
+    } else if (isNight(hour)) {
         return greetings.night
     } else return greetings.morning
 }

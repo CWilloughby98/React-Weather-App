@@ -2,7 +2,9 @@
 #root{
     overflow-x: hidden;
     overflow-y: hidden;
+    font-family: "Montserrat", sans-serif;
 }
+
 .jumbo-weather{
     width: 125px;
 }
