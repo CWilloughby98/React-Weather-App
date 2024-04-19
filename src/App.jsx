@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, createContext } from "react";
+import { useState, useEffect, useRef, createContext } from "react";
 import Navbar from "./components/Navbar";
 import Location from "./components/Location";
 import Jumbotron from "./components/Jumbotron";
@@ -69,10 +69,18 @@ function App() {
   const dayOffset = weather?.currDay?.date?.slice(5) || ""
   
   const handleNextDay = () => {
-    //console.log("OFFSET:", dayOffset, offset)
-    setOffset(prevVal => (prevVal + 1) % weather.daysArr.length)
+    setOffset(prevVal => (prevVal + 1) % weather.daysArr.length);
+  }
+  const handleNextDayClick = () => {
+    handleNextDay()
   }
 
+  const handlePrevDay = () => {
+    setOffset(offset > 0 ? (prevVal) => prevVal - 1 : offset)
+  }
+  const handlePrevDayClick = () => {
+    handlePrevDay()
+  }
 
   return (
     <IsNightContext.Provider value={isAfter22}>
@@ -82,28 +90,26 @@ function App() {
           {/* {coordinates.lat} {coordinates.lon} */}
           <Location props={{icon: locationIcon, location: weather.location}} />
           <Jumbotron props={{icon: getIconFomWeather(weather.currentWeather, isAfter22), temp: weather.temp, description: "", currentWeather: weather.currentWeather}}/>
-          <div  className="pt-4 mb-3 d-flex justify-content-center align-items-center px-4">
-            <div className="d-flex gap-5 justify-content-between">
+          <div className="pt-4 mb-3 d-flex justify-content-center px-4">
+            <div className="d-flex gap-3 justify-content-center px-3">
               <button 
-                    onClick={() => setOffset(offset > 0 ? (prevVal) => prevVal - 1 : offset)}
+                    onClick={handlePrevDayClick}
                     className={`btn fw-bold btn-outline-light`}
+                    style={{ width: "100px" }}
                     disabled = {offset === 0}
                     type="button"
-                    data-bs-target="#carousel"
-                    data-bs-slide="next"
                     >
-                  <span>Prev Day </span>
+                  <span>Prev Day</span>
               </button>
-              <div className={`fs-4 fw-bold text-light`}>
+              <div style={{ width: "100px" }} className={`fs-4 fw-bold text-light text-center align-self-center`}>
                 {dayOffset}
               </div>
               <button
-                    onClick={handleNextDay}
+                    onClick={handleNextDayClick}
                     className={`btn fw-bold btn-outline-light`}
+                    style={{ width: "100px" }}
                     disabled = {offset === (6)}
                     type="button"
-                    data-bs-target="#carousel"
-                    data-bs-slide="next"
                     >
                 <span>Next Day</span>
               </button>
