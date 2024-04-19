@@ -23,7 +23,6 @@ function App() {
   const [hasPermission, setHasPermission] = useState(undefined)
 
   const isAfter22 = isNight(currHour.hour)
-  
 
   const updateCoords = async () => {
     const newCoords = await getCoordinates()
@@ -46,7 +45,6 @@ function App() {
     const granted = grantedPermissions.location === "granted"
     setHasPermission(granted)
   }
-  
   
   
   useEffect(() => {
@@ -74,6 +72,7 @@ function App() {
     //console.log("OFFSET:", dayOffset, offset)
     setOffset(prevVal => (prevVal + 1) % weather.daysArr.length)
   }
+
 
   return (
     <IsNightContext.Provider value={isAfter22}>
@@ -118,6 +117,6 @@ function App() {
 }
 
 //TODO
-//Make an About Modal with stuff
+//If Location is not on, open modal asking to turn on.
 
 export default App;

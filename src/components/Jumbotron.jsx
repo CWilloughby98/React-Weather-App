@@ -4,7 +4,7 @@ import { IsNightContext } from "../App";
 
 const Jumbotron = ({props}) => {
 
-    const isNight = useContext(IsNightContext) 
+    const isNight = useContext(IsNightContext)
 
     return ( 
         <div className="bg-transparent mx-4 py-4 mb-5" data-bs-theme="dark">

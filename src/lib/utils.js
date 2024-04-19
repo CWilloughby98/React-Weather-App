@@ -9,7 +9,6 @@ import rainy from "../assets/WeatherIcons/rainy.svg"
 import rainymoon from "../assets/WeatherIcons/rainymoon.svg"
 import snowy from "../assets/WeatherIcons/snowy.svg"
 import stormy from "../assets/WeatherIcons/stormy.svg"
-import windy from "../assets/WeatherIcons/windy.svg"
 import windyrain from "../assets/WeatherIcons/windyrain.svg"
 
 const weatherIcons = {
@@ -120,7 +119,7 @@ const greetings = {
     night: "Good Night"
 }
 
-export const isNight = (currentHour) => currentHour <= 8 || currentHour > 21 
+export const isNight = (currentHour) => currentHour <= 8 || currentHour >= 21
 
 export const getIconFomWeather = (weather = "cloud", isNight) => {
     const icons = isNight ? weatherIcons.night : weatherIcons.day;

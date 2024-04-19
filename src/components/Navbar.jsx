@@ -60,9 +60,11 @@ const Navbar = ({props}) => {
                   ></button>
                 </div>
                 <div className="modal-body lh-lg">This is a simple weather app that displays the current weather based on your device location.
-                    On the bottom part we can also see the weather and temperatures for every three hours in a day ranging through the whole week. 
                     <br />
-                    Check out the code on: <a href="https://github.com/CWilloughby98/React-Weather-App"><img className="giticon mx-1" src={gitIcon} alt="" />Github</a>    
+                    Forecast is also displayed at the bottom of the screen for every three hours in a day, ranging up to the next 7 days. 
+                    <br />
+                    <br />
+                    <small>Check out the code on:<a href="https://github.com/CWilloughby98/React-Weather-App"><img className="giticon mx-1" src={gitIcon} alt="" />Github</a></small>     
                 </div>
                 <div className="modal-footer">
                   Made with 💞 and ☕ by Charlie
