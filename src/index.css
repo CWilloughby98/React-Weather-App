@@ -40,11 +40,11 @@
 }
 
 .poster-day{
-    background-image: url("./assets/day.png");
+    background-image: url("./assets/peakday.jpg");
     background-size: cover;
 }
 .poster-night{
-    background-image: url("./assets/night.png");
+    background-image: url("./assets/peaknight.jpg");
     background-size: cover;
 }
 
@@ -53,4 +53,9 @@
 }
 .text-night{
     color: rgb(206, 206, 206);
+}
+
+.giticon{
+    width: 25px;
+    margin-bottom: 5px;
 }

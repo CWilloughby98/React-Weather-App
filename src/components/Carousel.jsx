@@ -8,7 +8,7 @@ const Carousel = ({props}) => {
     const isNight = useContext(IsNightContext) 
 
     return (
-        <div style={!isNight ? {filter:"invert(1)"} : {}} className="card-array d-flex overflow-x-scroll">
+        <div className="card-array d-flex overflow-x-scroll">
             <div className="d-flex">
             {props.hours.map((elem, index) => 
                 (<div key={index} className="card-container bg-transparent card p-4 py-5 ms-4 border-3 border-opacity-50 border-light" >

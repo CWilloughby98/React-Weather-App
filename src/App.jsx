@@ -34,41 +34,46 @@ function App() {
     const apiRes = await getCurrentWeather(coordinates.lat, coordinates.lon, offset)
     setWeather(apiRes)
   }
-
+  
   const updatePermissions = async () => {
     const permissions = await Geolocation.checkPermissions()
     setHasPermission(permissions.location === "granted")
   }
-
+  
   const handlePermissions = async () => {
     const grantedPermissions = await Geolocation.requestPermissions({permissions: [`location`]})
-    console.log("Granted:", grantedPermissions)
+    //console.log("Granted:", grantedPermissions)
     const granted = grantedPermissions.location === "granted"
     setHasPermission(granted)
   }
-
-
+  
+  
+  
   useEffect(() => {
     updatePermissions()
   }, [])
-
+  
   useEffect(() => {
-    console.log("HasPermis is:", hasPermission)
+    //console.log("HasPermis is:", hasPermission)
     if (hasPermission === false) {
       handlePermissions()
     } if (hasPermission === true) {
       updateCoords()
     }
   }, [hasPermission])
-
+  
   useEffect(() =>{
     updateWeather()
-    console.log("SetCoordinates:", coordinates.lat, coordinates.lon)
+    //console.log("SetCoordinates:", coordinates.lat, coordinates.lon)
   }, [offset, coordinates])
-
-
+  
+  
   const dayOffset = weather?.currDay?.date?.slice(5) || ""
-
+  
+  const handleNextDay = () => {
+    //console.log("OFFSET:", dayOffset, offset)
+    setOffset(prevVal => (prevVal + 1) % weather.daysArr.length)
+  }
 
   return (
     <IsNightContext.Provider value={isAfter22}>
@@ -78,11 +83,11 @@ function App() {
           {/* {coordinates.lat} {coordinates.lon} */}
           <Location props={{icon: locationIcon, location: weather.location}} />
           <Jumbotron props={{icon: getIconFomWeather(weather.currentWeather, isAfter22), temp: weather.temp, description: "", currentWeather: weather.currentWeather}}/>
-          <div  className="pt-4 mb-3 d-flex justify-content-between align-items-center px-4">
-            <div className="d-flex gap-2">
+          <div  className="pt-4 mb-3 d-flex justify-content-center align-items-center px-4">
+            <div className="d-flex gap-5 justify-content-between">
               <button 
                     onClick={() => setOffset(offset > 0 ? (prevVal) => prevVal - 1 : offset)}
-                    className={`btn fw-bold ${!isAfter22 ? "btn-outline-dark" : "btn-outline-light"}`}
+                    className={`btn fw-bold btn-outline-light`}
                     disabled = {offset === 0}
                     type="button"
                     data-bs-target="#carousel"
@@ -90,18 +95,19 @@ function App() {
                     >
                   <span>Prev Day </span>
               </button>
+              <div className={`fs-4 fw-bold text-light`}>
+                {dayOffset}
+              </div>
               <button
-                    onClick={() => setOffset((prevVal) => prevVal + 1)}
-                    className={`btn fw-bold ${!isAfter22 ? "btn-outline-dark" : "btn-outline-light"}`}
+                    onClick={handleNextDay}
+                    className={`btn fw-bold btn-outline-light`}
+                    disabled = {offset === (6)}
                     type="button"
                     data-bs-target="#carousel"
                     data-bs-slide="next"
                     >
                 <span>Next Day</span>
               </button>
-            </div>
-            <div className={`fs-4 fw-bold ${!isAfter22 ? "text-dark" : "text-light"}`}>
-              {dayOffset}
             </div>
           </div>
           <Carrrousel props={{hours: weather.hourlyWeather || []}} />
@@ -113,6 +119,5 @@ function App() {
 
 //TODO
 //Make an About Modal with stuff
-//Brief description based on weather condition (maybe)
 
 export default App;

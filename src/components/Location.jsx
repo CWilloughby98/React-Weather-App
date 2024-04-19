@@ -9,7 +9,7 @@ const Location = ({props}) => {
     const isNight = useContext(IsNightContext) 
 
     return (
-        <div style={!isNight ? {filter:"invert(1)"} : {}} className="bg-transparent text-light mx-4 mb-3">
+        <div className="bg-transparent text-light mx-4 mb-3">
             <div className="d-flex align-items-center gap-2">
                 <img className="location-icon" src={props.icon} alt="Icono UBI" />
                 <span className="fs-3">{props.location}</span>
